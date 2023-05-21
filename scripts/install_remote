@@ -1,0 +1,11 @@
+#!/bin/bash -e
+
+# https://github.com/buchgr/bazel-remote/
+
+rm -rf ./bazel-remote
+git clone https://github.com/buchgr/bazel-remote.git
+cd bazel-remote
+bazel build :bazel-remote
+install ./bazel-bin/bazel-remote_/bazel-remote /usr/bin
+cd ..
+rm -rf ./bazel-remote

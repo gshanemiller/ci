@@ -47,5 +47,3 @@ system: CI through Bazel, GO server, and GO client over secure communication
 * Dev runs Bazel to build
 * Dev commits and pushes changes when done
 * Dev submits PR; see above
-
-In-progress: I am deciding if the DEV's code should exist on a local box `A` not in the build farm, and in which builds are done with normal Bazel build commands, or if the code is in the build farm somewhere and somehow the DEV has access to it by cross-mounts. In the later case builds would be done remotely.

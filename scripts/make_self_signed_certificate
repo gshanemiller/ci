@@ -1,0 +1,12 @@
+#!/bin/bash
+
+# --tls_certificate=<a string> default: see description
+# Specify a path to a TLS certificate that is trusted to sign server certificates.
+# --tls_client_certificate=<a string> default: see description
+# Specify the TLS client certificate to use; you also need to provide a client key to enable client authentication.
+# --tls_client_key=<a string> default: see description
+# Specify the TLS client key to use; you also need to provide a client certificate to enable client authentication.
+
+openssl req -x509 -newkey rsa:4096 -sha256 -days 3650 -nodes \
+  -keyout example.key -out example.crt -subj "/CN=reinvent.com" \
+  -addext "subjectAltName=IP:10.0.0.1,IP:10.0.0.2,IP:10.0.0.3"

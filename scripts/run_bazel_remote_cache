@@ -1,0 +1,21 @@
+#!/bin/bash
+
+export ROOT_DATA=${HOME}/data
+
+rm -rf ./${ROOT_DATA}
+mkdir -p ${ROOT_DATA}/log ${ROOT_DATA}/cache
+
+LOG_ERROR=${ROOT_DATA}/log/log.stderr.txt
+LOG_STDOUT=${ROOT_DATA}/log/log.stdout.txt
+
+# units GB
+export BAZEL_REMOTE_MAX_SIZE=100
+export BAZEL_REMOTE_DIR=${ROOT_DATA}/cache
+export BAZEL_REMOTE_STORAGE_MODE=zstd
+export BAZEL_REMOTE_ZSTD_IMPLEMENTATION=go
+export BAZEL_REMOTE_HTTP_ADDRESS=0.0.0.0:8080
+export BAZEL_REMOTE_IDLE_TIMEOUT=0
+export BAZEL_REMOTE_ACCESS_LOG_LEVEL=all
+export BAZEL_REMOTE_LOG_TIMEZONE=UTC
+
+bazel-remote 1>${LOG_STDOUT} 2>${LOG_ERROR} &

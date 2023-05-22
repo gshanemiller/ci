@@ -1,5 +1,7 @@
 #!/bin/bash -e
 
+# run as root
+
 # https://github.com/buchgr/bazel-remote/
 
 rm -rf ./bazel-remote
